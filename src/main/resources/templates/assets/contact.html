@@ -9,7 +9,7 @@
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Grids | Creative - Bootstrap 3 Responsive Admin Template</title>
+  <title>Blank | Creative - Bootstrap 3 Responsive Admin Template</title>
 
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -39,17 +39,17 @@
 </head>
 
 <body>
-
   <!-- container section start -->
   <section id="container" class="">
     <!--header start-->
+
     <header class="header dark-bg">
       <div class="toggle-nav">
         <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
       </div>
 
       <!--logo start-->
-      <a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>
+      <a href="../index.html" class="logo">Nice <span class="lite">Admin</span></a>
       <!--logo end-->
 
       <div class="nav search-row" id="top_menu">
@@ -310,8 +310,8 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
-          <li class="active">
-            <a class="" href="index.html">
+          <li class="">
+            <a class="" href="../index.html">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
@@ -341,9 +341,9 @@
           </li>
           <li>
             <a class="" href="widgets.html">
-                          <i class="icon_genius"></i>
-                          <span>Widgets</span>
-                      </a>
+              <i class="icon_genius"></i>
+              <span>Widgets</span>
+            </a>
           </li>
           <li>
             <a class="" href="chart-chartjs.html">
@@ -365,7 +365,7 @@
             </ul>
           </li>
 
-          <li class="sub-menu">
+          <li class="sub-menu ">
             <a href="javascript:;" class="">
                           <i class="icon_documents_alt"></i>
                           <span>Pages</span>
@@ -375,7 +375,7 @@
               <li><a class="" href="profile.html">Profile</a></li>
               <li><a class="" href="login.html"><span>Login Page</span></a></li>
               <li><a class="" href="contact.html"><span>Contact Page</span></a></li>
-              <li><a class="" href="blank.html">Blank Page</a></li>
+              <li><a class="active" href="blank.html">Blank Page</a></li>
               <li><a class="" href="404.html">404 Error</a></li>
             </ul>
           </li>
@@ -388,190 +388,62 @@
 
     <!--main content start-->
     <section id="main-content">
-      <section class=" wrapper">
+      <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-tasks"></i> Grids</h3>
+            <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-              <li><i class="fa fa-desktop"></i>UI Fitures</li>
-              <li><i class="fa fa-tasks"></i>Grids</li>
+              <li><i class="fa fa-home"></i><a href="../index.html">Home</a></li>
+              <li><i class="fa fa-bars"></i>Pages</li>
+              <li><i class="fa fa-square-o"></i>Pages</li>
             </ol>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <h4>Grid System - Base on Bootstrap grid system.</h4></div>
-          <div class="col-lg-12">
-            <section class="panel">
-              <div class="panel-body">col-lg-12</div>
-            </section>
-          </div>
-        </div>
+        <!-- page start-->
         <div class="row">
           <div class="col-lg-6">
-            <section class="panel">
-              <div class="panel-body">col-lg-6</div>
-            </section>
-          </div>
-          <div class="col-lg-6">
-            <section class="panel">
-              <div class="panel-body">col-lg-6</div>
-            </section>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4">
-            <section class="panel">
-              <div class="panel-body">col-lg-4</div>
-            </section>
-          </div>
-          <div class="col-lg-4">
-            <section class="panel">
-              <div class="panel-body">col-lg-4</div>
-            </section>
-          </div>
-          <div class="col-lg-4">
-            <section class="panel">
-              <div class="panel-body">col-lg-4</div>
-            </section>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-3">
-            <section class="panel">
-              <div class="panel-body">col-lg-3</div>
-            </section>
-          </div>
-          <div class="col-lg-3">
-            <section class="panel">
-              <div class="panel-body">col-lg-3</div>
-            </section>
-          </div>
-          <div class="col-lg-3">
-            <section class="panel">
-              <div class="panel-body">col-lg-3</div>
-            </section>
-          </div>
-          <div class="col-lg-3">
-            <section class="panel">
-              <div class="panel-body">col-lg-3</div>
-            </section>
-          </div>
-        </div>
+            <div class="recent">
+              <h3>Send us a message</h3>
+            </div>
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <form action="" method="post" role="form" class="contactForm">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <div class="validation"></div>
+              </div>
 
-        <div class="row">
-          <div class="col-lg-2">
-            <section class="panel">
-              <div class="panel-body">col-lg-2</div>
-            </section>
+              <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send Message</button></div>
+            </form>
           </div>
-          <div class="col-lg-2">
-            <section class="panel">
-              <div class="panel-body">col-lg-2</div>
-            </section>
-          </div>
-          <div class="col-lg-2">
-            <section class="panel">
-              <div class="panel-body">col-lg-2</div>
-            </section>
-          </div>
-          <div class="col-lg-2">
-            <section class="panel">
-              <div class="panel-body">col-lg-2</div>
-            </section>
-          </div>
-          <div class="col-lg-2">
-            <section class="panel">
-              <div class="panel-body">col-lg-2</div>
-            </section>
-          </div>
-          <div class="col-lg-2">
-            <section class="panel">
-              <div class="panel-body">col-lg-2</div>
-            </section>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <p>Mobile, tablet, and desktop</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="row">
-              <div class="col-xs-6">
-                <section class="panel">
-                  <div class="panel-body">col-xs-6</div>
-                </section>
-              </div>
-              <div class="col-xs-6">
-                <section class="panel">
-                  <div class="panel-body">col-xs-6</div>
-                </section>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-8">
-            <section class="panel">
-              <div class="panel-body">col-lg-8</div>
-            </section>
-          </div>
-        </div>
-        <div class="row">
+
           <div class="col-lg-6">
-            <div class="row">
-              <div class="col-sm-6">
-                <section class="panel">
-                  <div class="panel-body">col-sm-6</div>
-                </section>
-              </div>
-              <div class="col-sm-6">
-                <section class="panel">
-                  <div class="panel-body">col-sm-6</div>
-                </section>
-              </div>
+            <div class="recent">
+              <h3>Get in touch with us</h3>
+            </div>
+            <div class="">
+              <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum.</p>
+              <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum.</p>
+
+              <h4>Address:</h4>Little Lonsdale St, New York<br>
+              <h4>Telephone:</h4>345 578 59 45 416</br>
+              <h4>Fax:</h4>123 456 789
             </div>
           </div>
-          <div class="col-lg-6">
-            <section class="panel">
-              <div class="panel-body">col-lg-6</div>
-            </section>
-          </div>
         </div>
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="row">
-              <div class="col-md-6">
-                <section class="panel">
-                  <div class="panel-body">col-md-6</div>
-                </section>
-              </div>
-              <div class="col-md-6">
-                <section class="panel">
-                  <div class="panel-body">col-md-6</div>
-                </section>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <section class="panel">
-              <div class="panel-body">col-lg-4</div>
-            </section>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <section class="panel">
-              <div class="panel-body">col-sm-6</div>
-            </section>
-          </div>
-          <div class="col-sm-6">
-            <section class="panel">
-              <div class="panel-body">col-sm-6</div>
-            </section>
-          </div>
-        </div>
+        <!-- page end-->
       </section>
     </section>
     <!--main content end-->
@@ -588,16 +460,15 @@
     </div>
   </section>
   <!-- container section end -->
-
   <!-- javascripts -->
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <!-- nice scroll -->
   <script src="js/jquery.scrollTo.min.js"></script>
   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-
   <!--custome script for all page-->
   <script src="js/scripts.js"></script>
+  <script src="contactform/contactform.js"></script>
 
 
 </body>
