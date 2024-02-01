@@ -27,7 +27,7 @@ public class State {
 	@JoinColumn(name="countryid", insertable=false, updatable=false)
 	private Country country;
 	
-	private Integer countryid;
+	private Integer countryid; //will be used in adding new state in stateAdd.html
 	
 	private String details;
 	

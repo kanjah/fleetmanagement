@@ -16,19 +16,19 @@ public class CountryController {
     private CountryService countryService;
 
     // return list of all countries from the service
-    @GetMapping("/countries")
+    @GetMapping("/settings/countries")
     //passing the model country to the other pages so that country/countryList can be displayed to the user(UI)
-      public String getAll(Model model){
+     public String getAll(Model model){
 
         //list of countries from getAll() from CountryService
-       List<Country> countries = countryService.getAll();
+      List<Country> countries = countryService.findAll();
 
        //pass the country list obtained with attribute of countries to the UI/user
         model.addAttribute("countries", countries);
 
        //display the countryList html page i.e(template/setting/countryList)
         return "settings/countryList";
-    }
+   }
 
     // add country
     @GetMapping("/countryAdd")

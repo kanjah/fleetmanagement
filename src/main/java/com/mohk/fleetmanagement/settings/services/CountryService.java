@@ -13,7 +13,7 @@ public class CountryService {
     private CountryRepository countryRepository;
 
 //    Fetch all countries
-    public List<Country> getAll(){
+    public List<Country> findAll(){
         return countryRepository.findAll();
     }
 
@@ -31,6 +31,8 @@ public class CountryService {
     public Country getById(Integer id) {
         return countryRepository.findById(id).orElse(null);
     }
+
+
 }
 
 
