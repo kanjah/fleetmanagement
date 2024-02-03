@@ -29,6 +29,12 @@ public class CountryController {
        //display the countryList html page i.e(template/setting/countryList)
         return "settings/countryList";
    }
+    //The Get Country By Id for locationAdd form step 1
+    @GetMapping("/settings/country/{id}")
+    @ResponseBody //returns json instead of html
+    public Country getCountry(@PathVariable Integer id){
+        return countryService.getById(id);
+    }
 
     // add country
     @GetMapping("/countryAdd")
@@ -37,38 +43,47 @@ public class CountryController {
     }
 
     //save new country from form
-    @PostMapping("/countries")
+    @PostMapping("/settings/countries")
     public String save(Country country){
         countryService.save(country);
-        return "redirect:/countries";
+        return "redirect:/settings/countries";
     }
     //delete country
-    @RequestMapping(value = "/countries/delete/{id}", method = {RequestMethod.GET, RequestMethod.DELETE})
+    @RequestMapping(value = "settings/countries/delete/{id}", method = {RequestMethod.GET, RequestMethod.DELETE})
     public String delete(@PathVariable Integer id){
         countryService.delete(id);
-        return "redirect:/countries";
+        return "redirect:/settings/countries";
     }
 
     // edit country
-    @GetMapping("/countryEdit/{id}")
+    @GetMapping("/settings/countryEdit/{id}")
     public String editCountry(@PathVariable Integer id, Model model){
         Country country = countryService.getById(id);
         model.addAttribute("country", country);
-        return "settings/countryEdit";
+        return "/settings/countryEdit";
     }
     //update country
     @RequestMapping(value = "/countries/update/{id}", method = {RequestMethod.GET, RequestMethod.PUT})
     public String update(Country country){
         countryService.save(country);
-        return "redirect:/countries";
+        return "redirect:/settings/countries";
     }
 
     //country details
-    @GetMapping("/countryDetails/{id}")
+    @GetMapping("/settings/countryDetails/{id}")
     public String detailsCountry(@PathVariable Integer id, Model model){
         Country country = countryService.getById(id);
         model.addAttribute("country", country);
         return "settings/countryDetails";
     }
+
+    //The op parameter is either Edit or Details
+    @GetMapping("/settings/country/{op}/{id}")
+    public String editCountry(@PathVariable Integer id, @PathVariable String op, Model model) {
+        Country country = countryService.getById(id);
+        model.addAttribute("country", country);
+        return "/settings/country" + op;
+    }
+
 
 }

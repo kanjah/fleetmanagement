@@ -32,7 +32,7 @@ public class StateController {
     @GetMapping("/settings/stateAdd")
     public String addState(Model model){
         addModelAttribute(model);
-        return "settings/stateAdd";
+        return "/settings/stateAdd";
     }
 
     @GetMapping("/settings/state/{op}/{id}")

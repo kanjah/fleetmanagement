@@ -1,85 +1,108 @@
 <!DOCTYPE html>
-<!--linking layout template -->
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="_layout" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <body>
-<!--Page header and Breadcrumb -->
+
 <div layout:fragment="content">
     <section class="wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa-bars"></i> Edit Page </h3>
+                <h3 class="page-header"><i class="fa fa fa-bars"></i> Add Country</h3>
                 <ol class="breadcrumb">
                     <li><i class="fa fa-home"></i><a href="/index">Home</a></li>
-                    <li><i class="fa fa-laptop"></i>Edit Page</li>
+                    <li><i class="fa fa-bars"></i><a href="/settings">Parameters</a></li>
+                    <li><i class="fa fa-bars"></i><a href="/settings/countries">Countries</a></li>
+                    <li><i class="fa fa-square-o"></i>Add Country</li>
                 </ol>
             </div>
         </div>
     <div class="container" style="width: 70%">
-        <div class="row justify-content-center" >
-    <div class="row">
-        <!--    add new country table begins-->
-        <form class="form-horizontal " th:action="@{/countries}" method="post">
+    <div class="row justify-content-center" >
         <div class="col-lg-12">
+            <form id="cform" class="form-horizontal" th:action="@{/settings/countries}" method="post">
             <section class="panel">
                 <header class="panel-heading">
                    Add New Country Record
                 </header>
                 <div class="panel-body">
-                       <div class="form-group">
+                        <div class="form-group">
                             <label class="control-label col-sm-4">Description</label>
                             <div class="col-sm-6">
-                                <input  name="description" type="text" size="16" class="form-control">
+                                <input name="description" type="text" size="16" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4">Capital</label>
                             <div class="col-sm-6">
-                                    <input name= "capital" class="form-control" size="16" type="text" >
-
-                                </div>
+                                 <input name="capital" class="form-control" size="16" type="text">
                             </div>
+                        </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-4"> Code</label>
+                            <label class="control-label col-sm-4"> Nationality</label>
                             <div class="col-sm-6">
-                                    <input name="code" type="text" size="16" class=" form-control" />
-                                </div>
-                            </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-4">Nationality</label>
-
-                            <div class="col-sm-6">
-                                <input name="nationality" type="text" size="16" class="form-control">
+                                <input name="nationality" type="text" class=" form-control" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4">Continent</label>
 
-                            <div class="col-sm-6">
-                                <input name="continent" type="text" size="16" class="form-control">
+                            <div class="col-sm-5">
+                                <input name="continent" type="text" class="form-control">
                             </div>
                         </div>
-                        <!--add new country table end-->
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">Code</label>
+
+                            <div class="col-sm-5">
+                                <input name="code" type="text"  class="form-control">
+                            </div>
+                        </div>
+
                 </div>
             </section>
             <section class="panel">
+
                 <div class="panel-body">
                     <button type="submit" class="btn btn-primary">
                         Save
                     </button>
-                    <a href="/countries" class="btn  btn-warning">
+                    <a href="/settings/countries" class="btn  btn-warning">
                         Exit
                     </a>
                 </div>
             </section>
+            </form>
 
         </div>
-        </form>
     </div>
     </div>
-    </div>
+    </section>
+</div>
+<th:block layout:fragment="script">
+    <script language="JavaScript">
+        $('document').ready(function () { // Line 1
+
+            $('#cform').on('submit',function () { // Line 2
+                console.log("Form was successfully submitted!");
+            })
+
+        })
+    </script>
+</th:block>
+
+<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+    <div class="toast" data-delay="5000" style="position: absolute; top: 0; right: 0;">
+        <div class="toast-header">
+            <strong class="mr-auto">Thank you</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Success
+        </div>
     </div>
 </div>
 </body>

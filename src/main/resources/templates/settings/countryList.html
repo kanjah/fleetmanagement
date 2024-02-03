@@ -6,19 +6,18 @@
 
 <div layout:fragment="content">
     <section class="wrapper">
-            <div class="row">
+        <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa-bars"></i> Countries Page </h3>
+                <h3 class="page-header"><i class="fa fa fa-bars"></i> Counties Management</h3>
                 <ol class="breadcrumb">
                     <li><i class="fa fa-home"></i><a href="/index">Home</a></li>
-                    <li><i class="fa fa-laptop"></i>Countries Page</li>
+                    <li><i class="fa fa-bars"></i><a href="/settings">Parameters</a></li>
+                    <li><i class="fa fa-square-o"></i>Countries Management</li>
                 </ol>
             </div>
         </div>
-
-
         <div class="col-lg-12">
-        <!-- new country button-->
+            <!-- new country button-->
             <section class="panel">
                 <div class="panel-body">
                     <a href="/countryAdd" data-toggle="modal" class="btn btn-primary">
@@ -30,7 +29,7 @@
             <!--       Display Country List Begins     -->
             <section class="panel">
                 <header class="panel-heading">
-                    Advanced Table
+                   Country List
                 </header>
 
                 <table class="table table-striped table-advance table-hover">
@@ -47,7 +46,7 @@
 
                     <!--   each here implies the tr can be repeated-->
                     <tr th:each="country: ${countries}">
-                    <!-- this will display the attributes found in CountryController-->
+                        <!-- this will display the attributes found in CountryController-->
                         <td th:text="${country.description}"></td>
                         <td th:text="${country.capital}"></td>
                         <td th:text="${country.code}"></td>
@@ -55,17 +54,16 @@
                         <td th:text="${country.continent}"></td>
 
                         <td>
-                                <!--list button-->
+                            <!--list button-->
                             <div class="btn-group">
-                                <a class="btn btn-primary" th:href="@{'/countryDetails/'+${country.id}}"><i class="icon_plus_alt2"></i></a>
-
-                                <!--edit button-->
-                                <a class="btn btn-success" th:href="@{'/countryEdit/'+${country.id}}"><i class="icon_check_alt2"></i></a>
-
-                                <!-- del button-->
+                                <a class="btn btn-primary" th:href="@{'/settings/countryDetails/'+${country.id}}">
+                                    <i class="icon_document_alt"></i></a>
+                                <a class="btn btn-success"
+                                   th:href="@{'/settings/country/Edit/'+${country.id}}">
+                                    <i class="icon_pencil-edit"></i></a>
                                 <a class="btn btn-danger"
                                    onclick="return confirm('Are you sure you want to delete this record?')"
-                                   th:href="@{'/countries/delete/'+${country.id}}"><i class="icon_close_alt2"></i></a>
+                                   th:href="@{'/settings/countries/delete/'+${country.id}}"><i class="icon_close_alt2"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -78,9 +76,9 @@
 
 
 
-        </div>
-    </section>
-    <p>Changing contents</p>
+</div>
+</section>
+<p>Changing contents</p>
 </div>
 </body>
 </html>
