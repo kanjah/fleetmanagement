@@ -3,6 +3,7 @@ package com.mohk.fleetmanagement.settings.services;
 import com.mohk.fleetmanagement.settings.models.Country;
 import com.mohk.fleetmanagement.settings.repositories.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,6 +38,15 @@ public class CountryService {
         return countryRepository.findByKeyword(keyword);
     }
 
+    //for sorting
+    public List<Country> findAllWithSort(String field, String direction){
+        //initial value
+         Sort sort = direction.equalsIgnoreCase(Sort.Direction.ASC.name())
+         ? Sort.by(field).ascending()
+         : Sort.by(field).descending();
+
+        return  countryRepository.findAll(sort);
+    }
 
 }
 

@@ -2,6 +2,7 @@ package com.mohk.fleetmanagement.settings.controllers;
 
 import com.mohk.fleetmanagement.settings.models.Country;
 import com.mohk.fleetmanagement.settings.services.CountryService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +39,22 @@ public class CountryController {
        //display the countryList html page i.e(template/setting/countryList)
         return "settings/countryList";
    }
+
+    // For sorting lists with both Asc and Desc in contryList.html
+    @GetMapping("/settings/countries/{field}")
+       public String getAllWithSort(Model model,
+                                    @PathVariable("field") String field,
+                                    @PathParam("sortDir") String sortDir){ //sortDir is found in the countryList table header section
+
+          List<Country> countries;
+
+          countries = countryService.findAllWithSort(field, sortDir);
+          model.addAttribute("sortDir", sortDir);
+          model.addAttribute("reverseSortDir", sortDir.equals("asc")?"desc":"asc");
+          model.addAttribute("countries", countries);
+          return "settings/countryList";
+    }
+
     //The Get Country By Id for locationAdd form step 1
     @GetMapping("/settings/country/{id}")
     @ResponseBody //returns json instead of html

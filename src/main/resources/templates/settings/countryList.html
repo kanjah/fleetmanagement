@@ -54,11 +54,11 @@
                     <tbody>
 
                     <tr >
-                        <th><i class="icon_profile"></i> Description</th>
-                        <th><i class="icon_calendar"></i> Capital</th>
-                        <th><i class="icon_mail_alt"></i> Code</th>
-                        <th><i class="icon_pin_alt"></i> Nationality</th>
-                        <th><i class="icon_mobile"></i> Continent</th>
+                        <th><i class="icon_profile"></i><a th:href="@{'/settings/countries/description?sortDir=' + ${reverseSortDir}}">Description</a></th>
+                        <th><i class="icon_calendar"></i><a th:href="@{'/settings/countries/description?sortDir=' + ${reverseSortDir}}">Capital</a></th>
+                        <th><i class="icon_mail_alt"></i> <a th:href="@{'/settings/countries/description?sortDir=' + ${reverseSortDir}}">Code</a></th>
+                        <th><i class="icon_pin_alt"></i> <a th:href="@{'/settings/countries/description?sortDir=' + ${reverseSortDir}}">Nationality</a></th>
+                        <th><i class="icon_mobile"></i> <a th:href="@{'/settings/countries/description?sortDir=' + ${reverseSortDir}}">Continent</a></th>
                         <th><i class="icon_cogs"></i> Action</th>
                     </tr>
 
