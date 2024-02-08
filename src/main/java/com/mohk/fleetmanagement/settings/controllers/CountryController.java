@@ -4,6 +4,7 @@ import com.mohk.fleetmanagement.settings.models.Country;
 import com.mohk.fleetmanagement.settings.services.CountryService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,42 +18,83 @@ public class CountryController {
     private CountryService countryService;
 
     // return list of all countries from the service
-    @GetMapping("/settings/countries")
-    //passing the model country to the other pages so that country/countryList can be displayed to the user(UI)
-    //we use keyword to cater for the search in the countryList
-     public String getAll(Model model, String keyword){
+//    @GetMapping("/settings/countries")
+//    //passing the model country to the other pages so that country/countryList can be displayed to the user(UI)
+//    //we use keyword to cater for the search in the countryList
+//     public String getAll(Model model, String keyword){
+//
+//        //list of countries from getAll() from CountryService
+//      List<Country> countries;
+//
+//      //check if keyword is present or not
+//      if(keyword == null){
+//          countries = countryService.findAll();
+//      }
+//      else {
+//          countries = countryService.findByKeyword(keyword);
+//      }
+//
+//       //pass the country list obtained with attribute of countries to the UI/user
+//        model.addAttribute("countries", countries);
+//
+//       //display the countryList html page i.e(template/setting/countryList)
+//        return "settings/countryList";
+//   }
+    //for pagination
 
-        //list of countries from getAll() from CountryService
-      List<Country> countries;
 
-      //check if keyword is present or not
-      if(keyword == null){
-          countries = countryService.findAll();
-      }
-      else {
-          countries = countryService.findByKeyword(keyword);
-      }
+   //displays the first page, it's called when the page loads for the fist time
+   //The page number argument would be 1.
+   @GetMapping("/settings/countries")
+   public String getAllPages(Model model){
+       return getOnePage(model, 1);
+   }
 
-       //pass the country list obtained with attribute of countries to the UI/user
-        model.addAttribute("countries", countries);
 
-       //display the countryList html page i.e(template/setting/countryList)
-        return "settings/countryList";
+   @GetMapping("/settings/countries/page/{pageNumber}")
+   public String getOnePage(Model model, @PathVariable("pageNumber") int currentPage){
+       //call the findPage() method, giving it the pageNumber/currentPage as argument.
+       Page<Country> page = countryService.findPage(currentPage);
+
+//       once we have the page, we would extract the following:
+//
+//       Total Pages – total pages in available
+//       Total Elements – total elements in the page (it’s possible the last page would have less elements than other pages)
+//       Content – the actual list of items. In this case, it’s list of Countries
+
+       int totalPages = page.getTotalPages();
+       long totalItems = page.getTotalElements();
+       List<Country> countries = page.getContent();
+
+       //send all of this together with the currentPage to the UI as model attributes.
+       model.addAttribute("currentPage", currentPage);
+       model.addAttribute("totalPages", totalPages);
+       model.addAttribute("totalItems", totalItems);
+       model.addAttribute("countries", countries);
+
+       return "/settings/countryList";
    }
 
     // For sorting lists with both Asc and Desc in contryList.html
-    @GetMapping("/settings/countries/{field}")
-       public String getAllWithSort(Model model,
-                                    @PathVariable("field") String field,
-                                    @PathParam("sortDir") String sortDir){ //sortDir is found in the countryList table header section
+    @GetMapping("/settings/countries/page/{pageNumber}/{field}")
+    public String getPageWithSort(Model model,
+                                  @PathVariable("pageNumber") int currentPage,
+                                  @PathVariable String field,
+                                  @PathParam("sortDir") String sortDir) {
 
-          List<Country> countries;
+        Page<Country> page = countryService.findAllWithSort(field, sortDir, currentPage);
+        List<Country> countries = page.getContent();
+        int totalPages = page.getTotalPages();
+        long totalItems = page.getTotalElements();
 
-          countries = countryService.findAllWithSort(field, sortDir);
-          model.addAttribute("sortDir", sortDir);
-          model.addAttribute("reverseSortDir", sortDir.equals("asc")?"desc":"asc");
-          model.addAttribute("countries", countries);
-          return "settings/countryList";
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalItems", totalItems);
+
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+        model.addAttribute("countries", countries);
+        return "/settings/countryList";
     }
 
     //The Get Country By Id for locationAdd form step 1
@@ -63,7 +105,7 @@ public class CountryController {
     }
 
     // add country
-    @GetMapping("/countryAdd")
+    @GetMapping("/settings/countryAdd")
     public String addCountry(){
         return "settings/countryAdd";
     }
