@@ -17,12 +17,30 @@
             </div>
         </div>
         <div class="col-lg-12">
-            <!-- new country button-->
+
             <section class="panel">
                 <div class="panel-body">
-                    <a href="settings/countryAdd" data-toggle="modal" class="btn btn-primary">
-                        New Country
-                    </a>
+                    <div class="row">
+                        <!-- new country button-->
+                        <div class="col-lg-6">
+                            <a href="settings/countryAdd" data-toggle="modal" class="btn btn-primary">
+                                New Country
+                            </a>
+                        </div>
+                        <!-- search button-->
+                        <form th:action="@{/settings/countries}" >
+                            <div class="col-lg-3">
+                                <input type="text" name="keyword" class="form-control" placeholder="search">
+                            </div>
+                            <div class="col-lg-3">
+                                <input type="submit" class="btn btn-success form-controll">
+                            </div>
+                        </form>
+
+                    </div>
+
+
+
                 </div>
             </section>
 

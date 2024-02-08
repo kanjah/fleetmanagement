@@ -18,10 +18,19 @@ public class CountryController {
     // return list of all countries from the service
     @GetMapping("/settings/countries")
     //passing the model country to the other pages so that country/countryList can be displayed to the user(UI)
-     public String getAll(Model model){
+    //we use keyword to cater for the search in the countryList
+     public String getAll(Model model, String keyword){
 
         //list of countries from getAll() from CountryService
-      List<Country> countries = countryService.findAll();
+      List<Country> countries;
+
+      //check if keyword is present or not
+      if(keyword == null){
+          countries = countryService.findAll();
+      }
+      else {
+          countries = countryService.findByKeyword(keyword);
+      }
 
        //pass the country list obtained with attribute of countries to the UI/user
         model.addAttribute("countries", countries);

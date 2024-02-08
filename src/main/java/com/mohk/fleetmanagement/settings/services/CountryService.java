@@ -32,6 +32,11 @@ public class CountryService {
         return countryRepository.findById(id).orElse(null);
     }
 
+    //search by keyword in countryList
+    public List<Country> findByKeyword(String keyword){
+        return countryRepository.findByKeyword(keyword);
+    }
+
 
 }
 
